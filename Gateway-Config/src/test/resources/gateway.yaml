@@ -1,0 +1,4 @@
+gateway:
+  routes:
+    - id: 123
+      uri: test.com/**
