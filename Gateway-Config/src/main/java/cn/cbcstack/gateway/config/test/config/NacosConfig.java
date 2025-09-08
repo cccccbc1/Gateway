@@ -1,7 +1,13 @@
 package cn.cbcstack.gateway.config.test.config;
 
+import lombok.Data;
+
 import static cn.cbcstack.gateway.common.constant.NacosConstant.*;
 
+/**
+ * nacos配置类
+ */
+@Data
 public class NacosConfig {
 
     /**
