@@ -1,4 +1,4 @@
-package cn.cbcstack.gateway.config.test.pojo;
+package cn.cbcstack.gateway.config.pojo;
 
 import lombok.Data;
 

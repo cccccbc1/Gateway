@@ -1,6 +1,6 @@
-package cn.cbcstack.gateway.config.test.service;
+package cn.cbcstack.gateway.config.service;
 
-import cn.cbcstack.gateway.config.test.config.ConfigCenter;
+import cn.cbcstack.gateway.config.config.ConfigCenter;
 
 /**
  * 配置中心

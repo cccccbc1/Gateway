@@ -1,6 +1,6 @@
-package cn.cbcstack.gateway.config.test.config;
+package cn.cbcstack.gateway.config.config;
 
-import cn.cbcstack.gateway.config.test.pojo.RouteDefinition;
+import cn.cbcstack.gateway.config.pojo.RouteDefinition;
 import lombok.Data;
 
 import java.util.ArrayList;

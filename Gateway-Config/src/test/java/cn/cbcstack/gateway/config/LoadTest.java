@@ -1,7 +1,7 @@
-package cn.cbcstack.gateway.config.test;
+package cn.cbcstack.gateway.config;
 
-import cn.cbcstack.gateway.config.test.config.Config;
-import cn.cbcstack.gateway.config.test.loader.ConfigLoader;
+import cn.cbcstack.gateway.config.config.Config;
+import cn.cbcstack.gateway.config.loader.ConfigLoader;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,7 +1,7 @@
-package cn.cbcstack.gateway.config.test.loader;
+package cn.cbcstack.gateway.config.loader;
 
-import cn.cbcstack.gateway.config.test.config.Config;
-import cn.cbcstack.gateway.config.test.util.ConfigUtil;
+import cn.cbcstack.gateway.config.config.Config;
+import cn.cbcstack.gateway.config.util.ConfigUtil;
 
 import static cn.cbcstack.gateway.common.constant.ConfigConstant.CONFIG_PATH;
 import static cn.cbcstack.gateway.common.constant.ConfigConstant.CONFIG_PREFIX;

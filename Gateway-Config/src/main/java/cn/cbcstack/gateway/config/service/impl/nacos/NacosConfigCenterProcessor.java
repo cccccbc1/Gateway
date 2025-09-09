@@ -1,11 +1,11 @@
-package cn.cbcstack.gateway.config.test.service.impl.nacos;
+package cn.cbcstack.gateway.config.service.impl.nacos;
 
 import com.alibaba.fastjson.JSON;
-import cn.cbcstack.gateway.config.test.config.ConfigCenter;
-import cn.cbcstack.gateway.config.test.config.NacosConfig;
-import cn.cbcstack.gateway.config.test.pojo.RouteDefinition;
-import cn.cbcstack.gateway.config.test.service.ConfigCenterProcessor;
-import cn.cbcstack.gateway.config.test.service.RoutesChangeListener;
+import cn.cbcstack.gateway.config.config.ConfigCenter;
+import cn.cbcstack.gateway.config.config.NacosConfig;
+import cn.cbcstack.gateway.config.pojo.RouteDefinition;
+import cn.cbcstack.gateway.config.service.ConfigCenterProcessor;
+import cn.cbcstack.gateway.config.service.RoutesChangeListener;
 import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.PropertyKeyConst;
 import com.alibaba.nacos.api.config.ConfigService;

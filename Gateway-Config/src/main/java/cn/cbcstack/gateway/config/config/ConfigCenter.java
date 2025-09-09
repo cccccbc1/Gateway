@@ -1,4 +1,4 @@
-package cn.cbcstack.gateway.config.test.config;
+package cn.cbcstack.gateway.config.config;
 
 import cn.cbcstack.gateway.common.enums.ConfigCenterEnum;
 import lombok.Data;

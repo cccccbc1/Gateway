@@ -1,8 +1,8 @@
-package cn.cbcstack.gateway.config.test.service.impl.zookeeper;
+package cn.cbcstack.gateway.config.service.impl.zookeeper;
 
-import cn.cbcstack.gateway.config.test.config.ConfigCenter;
-import cn.cbcstack.gateway.config.test.service.ConfigCenterProcessor;
-import cn.cbcstack.gateway.config.test.service.RoutesChangeListener;
+import cn.cbcstack.gateway.config.config.ConfigCenter;
+import cn.cbcstack.gateway.config.service.ConfigCenterProcessor;
+import cn.cbcstack.gateway.config.service.RoutesChangeListener;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 

@@ -1,6 +1,6 @@
-package cn.cbcstack.gateway.config.test.service;
+package cn.cbcstack.gateway.config.service;
 
-import cn.cbcstack.gateway.config.test.pojo.RouteDefinition;
+import cn.cbcstack.gateway.config.pojo.RouteDefinition;
 
 import java.util.List;
 
