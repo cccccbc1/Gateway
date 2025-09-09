@@ -169,6 +169,7 @@ public class NacosRegisterCenter implements RegisterCenterProcessor {
 
                         ServiceInstance newInstance = new ServiceInstance();
                         BeanUtil.copyProperties(instance, newInstance);
+                        // metaData 在 nacos 上配置的参数，这里是个 map
                         BeanUtil.fillBeanWithMap(instance.getMetadata(), newInstance, true);
 
                         newInstances.add(newInstance);

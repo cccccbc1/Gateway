@@ -24,9 +24,11 @@ public class GrayStrategyManager {
 
     public static GrayStrategy getStrategy(String name) {
         GrayStrategy strategy = strategyMap.get(name);
-        if (strategy == null)
+        if (strategy == null) {
             strategy = new ThresholdGrayStrategy();
-        return strategy;
+            strategyMap.put(strategy.mark(), strategy);
+        }
+            return strategy;
     }
 
 }

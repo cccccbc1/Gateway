@@ -3,7 +3,9 @@ package cn.cbcstack.gateway.core.netty.processor;
 import cn.cbcstack.gateway.common.enums.ResponseCode;
 import cn.cbcstack.gateway.common.exception.GatewayException;
 import cn.cbcstack.gateway.core.context.GatewayContext;
+import cn.cbcstack.gateway.core.filter.FilterChainFactory;
 import cn.cbcstack.gateway.core.helper.ContextHelper;
+import cn.cbcstack.gateway.core.helper.ResponseHelper;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.FullHttpRequest;
@@ -15,8 +17,22 @@ import lombok.extern.slf4j.Slf4j;
 public class NettyCoreProcessor implements NettyProcessor{
     @Override
     public void process(ChannelHandlerContext ctx, FullHttpRequest request) {
-        // todo 核心处理逻辑
-        GatewayContext gatewayContext = ContextHelper.buildGatewayContext(request, ctx);
+        try {
+            GatewayContext gatewayContext = ContextHelper.buildGatewayContext(request, ctx);
+            // 构建过滤器链
+            FilterChainFactory.buildFilterChain(gatewayContext);
+            // 过滤逻辑
+            gatewayContext.doFilter();
+
+        } catch (GatewayException e) {
+            log.error("处理错误 {} {}", e.getCode(), e.getCode().getMessage());
+            FullHttpResponse httpResponse = ResponseHelper.buildHttpResponse(e.getCode());
+            doWriteAndRelease(ctx, request, httpResponse);
+        } catch (Throwable t) {
+            log.error("处理未知错误", t);
+            FullHttpResponse httpResponse = ResponseHelper.buildHttpResponse(ResponseCode.INTERNAL_ERROR);
+            doWriteAndRelease(ctx, request, httpResponse);
+        }
     }
 
     private void doWriteAndRelease(ChannelHandlerContext ctx, FullHttpRequest request, FullHttpResponse httpResponse) {
