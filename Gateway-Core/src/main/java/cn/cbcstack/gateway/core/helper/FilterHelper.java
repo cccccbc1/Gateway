@@ -7,6 +7,7 @@ import cn.hutool.json.JSONUtil;
 import java.util.Collection;
 
 import static cn.cbcstack.gateway.common.constant.FilterConstant.GRAY_FILTER_NAME;
+import static cn.cbcstack.gateway.common.constant.FilterConstant.LOAD_BALANCE_FILTER_NAME;
 
 public class FilterHelper {
 
@@ -31,7 +32,7 @@ public class FilterHelper {
     }
 
     /**
-     * 构建默认灰度策略
+     * 构建默认灰度策略（流量灰度）
      */
     public static RouteDefinition.FilterConfig buildDefaultGrayFilterConfig() {
         RouteDefinition.FilterConfig filterConfig = new RouteDefinition.FilterConfig();
@@ -41,5 +42,15 @@ public class FilterHelper {
         return filterConfig;
     }
 
+    /**
+     * 构建默认负载均衡策略（轮循）
+     */
+    public static RouteDefinition.FilterConfig buildDefaultLoadBalanceFilterConfig() {
+        RouteDefinition.FilterConfig filterConfig = new RouteDefinition.FilterConfig();
+        filterConfig.setName(LOAD_BALANCE_FILTER_NAME);
+        filterConfig.setEnable(true);
+        filterConfig.setConfig(JSONUtil.toJsonStr(new RouteDefinition.LoadBalanceFilterConfig()));
+        return filterConfig;
+    }
 
 }

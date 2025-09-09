@@ -6,6 +6,8 @@ import java.util.*;
 
 import static cn.cbcstack.gateway.common.constant.GrayConstant.MAX_GRAY_THRESHOLD;
 import static cn.cbcstack.gateway.common.constant.GrayConstant.THRESHOLD_GRAY_STRATEGY;
+import static cn.cbcstack.gateway.common.constant.LoadBalanceConstant.ROUND_ROBIN_LOAD_BALANCE_STRATEGY;
+import static cn.cbcstack.gateway.common.constant.LoadBalanceConstant.VIRTUAL_NODE_NUM;
 
 /**
  * 路由路径定义
@@ -55,6 +57,9 @@ public class RouteDefinition {
 
     }
 
+    /**
+     * 灰度配置
+     */
     @Data
     public static class GrayFilterConfig {
 
@@ -70,5 +75,27 @@ public class RouteDefinition {
 
     }
 
+    /**
+     * 负载均衡配置
+     */
+    @Data
+    public static class LoadBalanceFilterConfig {
+
+        /**
+         * 负载均衡策略名，默认轮询
+         */
+        private String strategyName = ROUND_ROBIN_LOAD_BALANCE_STRATEGY;
+
+        /**
+         * 是否开启严格轮询
+         */
+        private boolean isStrictRoundRobin = true;
+
+        /**
+         * 一致性哈希算法虚拟节点个数
+         */
+        private int virtualNodeNum = VIRTUAL_NODE_NUM;
+
+    }
 
 }
