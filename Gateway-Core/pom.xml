@@ -17,4 +17,33 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>cn.cbcstack</groupId>
+            <artifactId>Gateway-Common</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.cbcstack</groupId>
+            <artifactId>Gateway-Config</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <!--http-->
+        <dependency>
+            <groupId>org.asynchttpclient</groupId>
+            <artifactId>async-http-client</artifactId>
+            <version>${async-http-client.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.asynchttpclient</groupId>
+            <artifactId>async-http-client-netty-utils</artifactId>
+            <version>${async-http-client.version}</version>
+        </dependency>
+
+    </dependencies>
+
 </project>
