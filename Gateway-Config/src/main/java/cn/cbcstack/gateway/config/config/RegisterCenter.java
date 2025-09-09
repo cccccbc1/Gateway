@@ -2,9 +2,13 @@ package cn.cbcstack.gateway.config.config;
 
 import cn.cbcstack.gateway.common.constant.RegisterCenterConstant;
 import cn.cbcstack.gateway.common.enums.RegisterCenterEnum;
+import lombok.Data;
 
-
-public class RegisterCenterConfig {
+/**
+ * 注册中心配置
+ */
+@Data
+public class RegisterCenter {
 
     private RegisterCenterEnum type = RegisterCenterConstant.REGISTER_CENTER_DEFAULT_IMPL; // 注册中心实现
 
