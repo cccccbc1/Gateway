@@ -18,8 +18,10 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.HttpServerExpectContinueHandler;
+import io.netty.util.ResourceLeakDetector;
 import io.netty.util.concurrent.DefaultThreadFactory;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -27,6 +29,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * Netty 服务端
  */
+@Slf4j
 public class NettyHttpServer implements LifeCycle {
 
     private final GatewayConfig config;
@@ -86,12 +89,27 @@ public class NettyHttpServer implements LifeCycle {
                             );
                         }
                     });
-
+            serverBootstrap.bind().sync();
+            ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.ADVANCED);
+            log.info("gateway startup on port {}", this.config.getPort());
         }
 
     @Override
     public void shutdown() {
+        if (!start.get()) return;
+        // 关闭boss线程组
+        if (eventLoopGroupBoss != null) {
+            eventLoopGroupBoss.shutdownGracefully();
+        }
+        // 关闭worker线程组
+        if (eventLoopGroupWorker != null) {
+            eventLoopGroupWorker.shutdownGracefully();
+        }
+    }
 
+    @Override
+    public boolean isStarted() {
+        return start.get();
     }
 
 }

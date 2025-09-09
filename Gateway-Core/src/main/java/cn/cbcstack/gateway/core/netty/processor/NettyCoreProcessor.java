@@ -3,6 +3,7 @@ package cn.cbcstack.gateway.core.netty.processor;
 import cn.cbcstack.gateway.common.enums.ResponseCode;
 import cn.cbcstack.gateway.common.exception.GatewayException;
 import cn.cbcstack.gateway.core.context.GatewayContext;
+import cn.cbcstack.gateway.core.helper.ContextHelper;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.FullHttpRequest;
@@ -15,6 +16,7 @@ public class NettyCoreProcessor implements NettyProcessor{
     @Override
     public void process(ChannelHandlerContext ctx, FullHttpRequest request) {
         // todo 核心处理逻辑
+        GatewayContext gatewayContext = ContextHelper.buildGatewayContext(request, ctx);
     }
 
     private void doWriteAndRelease(ChannelHandlerContext ctx, FullHttpRequest request, FullHttpResponse httpResponse) {

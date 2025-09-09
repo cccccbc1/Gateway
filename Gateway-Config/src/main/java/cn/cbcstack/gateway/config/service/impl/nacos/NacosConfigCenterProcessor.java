@@ -68,7 +68,7 @@ public class NacosConfigCenterProcessor implements ConfigCenterProcessor {
         }
         NacosConfig nacos = configCenter.getNacos();
         String configJson = configService.getConfig(nacos.getDataId(), nacos.getGroup(), nacos.getTimeout());
-        /* configJson:
+        /* configJson示例:
          * {
          *     "routes": [
          *         {
