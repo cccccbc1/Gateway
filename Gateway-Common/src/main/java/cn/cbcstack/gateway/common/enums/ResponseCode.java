@@ -1,7 +1,6 @@
 package cn.cbcstack.gateway.common.enums;
 
 import io.netty.handler.codec.http.HttpResponseStatus;
-import lombok.Data;
 import lombok.Getter;
 
 @Getter
