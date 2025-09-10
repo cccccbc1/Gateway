@@ -1,4 +1,4 @@
-package cn.cbcstack.gateway.core.netty;
+package cn.cbcstack.gateway.core.container;
 
 public interface LifeCycle {
 

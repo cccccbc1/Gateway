@@ -4,7 +4,7 @@ import cn.cbcstack.gateway.common.util.SystemUtil;
 import cn.cbcstack.gateway.config.config.GatewayConfig;
 import cn.cbcstack.gateway.config.config.HttpClientConfig;
 import cn.cbcstack.gateway.core.http.HttpClient;
-import cn.cbcstack.gateway.core.netty.LifeCycle;
+import cn.cbcstack.gateway.core.container.LifeCycle;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.epoll.EpollEventLoopGroup;

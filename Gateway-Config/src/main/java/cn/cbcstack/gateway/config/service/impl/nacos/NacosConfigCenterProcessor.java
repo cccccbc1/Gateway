@@ -43,6 +43,7 @@ public class NacosConfigCenterProcessor implements ConfigCenterProcessor {
     @SneakyThrows(NacosException.class)
     @Override
     public void init(ConfigCenter configCenter) {
+        log.info("config center enabled: {}", configCenter.isEnabled());
         if (!configCenter.isEnabled() || !init.compareAndSet(false, true)) {
             return;
         }
@@ -80,8 +81,10 @@ public class NacosConfigCenterProcessor implements ConfigCenterProcessor {
          * }
          */
         log.info("config from nacos: \n{}", configJson);
-        List<RouteDefinition> routes = JSON.parseObject(configJson).getJSONArray("routes").toJavaList(RouteDefinition.class);
-        listener.onRoutesChange(routes);
+        if (configJson != null) {
+            List<RouteDefinition> routes = JSON.parseObject(configJson).getJSONArray("routes").toJavaList(RouteDefinition.class);
+            listener.onRoutesChange(routes);
+        }
 
         configService.addListener(nacos.getDataId(), nacos.getGroup(), new Listener() {
             @Override

@@ -9,7 +9,7 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>Gateway-Bootstrap</artifactId>
+    <artifactId>Gateway-Demo</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -18,10 +18,13 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>cn.cbcstack</groupId>
-            <artifactId>Gateway-Core</artifactId>
+            <artifactId>Gateway-Bootstrap</artifactId>
             <version>1.0</version>
         </dependency>
+
     </dependencies>
+
 </project>

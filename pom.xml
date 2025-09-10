@@ -14,6 +14,7 @@
         <module>Gateway-Config</module>
         <module>Gateway-Core</module>
         <module>Gateway-Register</module>
+        <module>Gateway-Demo</module>
     </modules>
 
     <properties>

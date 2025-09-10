@@ -2,8 +2,7 @@ package cn.cbcstack.gateway.core.netty.server;
 
 import cn.cbcstack.gateway.common.util.SystemUtil;
 import cn.cbcstack.gateway.config.config.GatewayConfig;
-import cn.cbcstack.gateway.config.config.NettyConfig;
-import cn.cbcstack.gateway.core.netty.LifeCycle;
+import cn.cbcstack.gateway.core.container.LifeCycle;
 import cn.cbcstack.gateway.core.netty.handler.NettyHttpServerHandler;
 import cn.cbcstack.gateway.core.netty.processor.NettyProcessor;
 import io.netty.bootstrap.ServerBootstrap;
