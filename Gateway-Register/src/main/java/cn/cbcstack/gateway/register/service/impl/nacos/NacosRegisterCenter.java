@@ -126,7 +126,6 @@ public class NacosRegisterCenter implements RegisterCenterProcessor {
                     if (subscribeServiceSet.contains(serviceName)) {
                         continue;
                     }
-
                     EventListener eventListener = new NacosRegisterListener();
                     // 订阅服务
                     namingService.subscribe(serviceName, group, eventListener);
