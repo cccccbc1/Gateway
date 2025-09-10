@@ -1,6 +1,7 @@
 package cn.cbcstack.gateway.config.pojo;
 
 import cn.cbcstack.gateway.common.enums.CircuitBreakerEnum;
+import cn.cbcstack.gateway.common.enums.FlowEnum;
 import cn.cbcstack.gateway.common.enums.ResilienceEnum;
 import lombok.Data;
 
@@ -11,6 +12,7 @@ import static cn.cbcstack.gateway.common.constant.GrayConstant.MAX_GRAY_THRESHOL
 import static cn.cbcstack.gateway.common.constant.GrayConstant.THRESHOLD_GRAY_STRATEGY;
 import static cn.cbcstack.gateway.common.constant.LoadBalanceConstant.ROUND_ROBIN_LOAD_BALANCE_STRATEGY;
 import static cn.cbcstack.gateway.common.constant.LoadBalanceConstant.VIRTUAL_NODE_NUM;
+import static cn.cbcstack.gateway.common.enums.FlowEnum.TOKEN_BUCKET;
 import static cn.cbcstack.gateway.common.enums.ResilienceEnum.*;
 
 /**
@@ -139,6 +141,34 @@ public class RouteDefinition {
          * 一致性哈希算法虚拟节点个数
          */
         private int virtualNodeNum = VIRTUAL_NODE_NUM;
+
+    }
+
+    @Data
+    public static class FlowFilterConfig {
+
+        /**
+         * 是否开启流控
+         */
+        private boolean enabled = false;
+
+        /**
+         * 流控类型
+         */
+        private FlowEnum type = TOKEN_BUCKET;
+
+        /**
+         * 容量
+         */
+        private int capacity = 1000;
+
+        /**
+         * 速率
+         * 如果是滑动窗口则是窗口大小，单位 ms
+         * 如果是令牌桶，则是令牌桶生成速率，单位 个/s
+         * 如果是漏桶，则是漏桶速率，单位 ms/个
+         */
+        private int rate = 500;
 
     }
 
