@@ -4,13 +4,13 @@ import cn.cbcstack.gateway.common.enums.ResponseCode;
 import cn.cbcstack.gateway.common.exception.LimitedException;
 import cn.cbcstack.gateway.core.context.GatewayContext;
 import cn.cbcstack.gateway.core.filter.flow.RateLimiter;
+import lombok.val;
 
 import java.time.Instant;
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
- * 华东窗口限流
+ * 滑动窗口限流
  */
 public class SlidingWindowRateLimiter implements RateLimiter {
 

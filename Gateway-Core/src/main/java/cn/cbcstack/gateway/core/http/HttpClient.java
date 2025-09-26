@@ -24,6 +24,7 @@ public class HttpClient {
         this.asyncHttpClient = asyncHttpClient;
     }
 
+    // 异步请求后端服务
     public CompletableFuture<Response> executeRequest(Request request) {
         ListenableFuture<Response> future = asyncHttpClient.executeRequest(request);
         return future.toCompletableFuture();
