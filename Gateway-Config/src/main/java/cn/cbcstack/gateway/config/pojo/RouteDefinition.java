@@ -115,6 +115,11 @@ public class RouteDefinition {
         private String strategyName = THRESHOLD_GRAY_STRATEGY;
 
         /**
+         * 灰度比例
+         */
+        private double grayThreshold = 0.1;
+
+        /**
          * 灰度流量最大比例
          */
         private double maxGrayThreshold = MAX_GRAY_THRESHOLD;

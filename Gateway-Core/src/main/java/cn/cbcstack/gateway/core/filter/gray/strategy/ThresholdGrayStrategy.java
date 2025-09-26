@@ -20,9 +20,10 @@ public class ThresholdGrayStrategy implements GrayStrategy {
     public boolean shouldRoute2Gray(GatewayContext context, List<ServiceInstance> instances) {
         if (instances.stream().anyMatch(instance -> instance.isEnabled() && !instance.isGray())) {
             RouteDefinition.GrayFilterConfig grayFilterConfig = FilterHelper.findFilterConfigByClass(context.getRoute().getFilterConfigs(), GRAY_FILTER_NAME, RouteDefinition.GrayFilterConfig.class);
-            double maxGrayThreshold = grayFilterConfig == null ? MAX_GRAY_THRESHOLD : grayFilterConfig.getMaxGrayThreshold();
-            double grayThreshold = instances.stream().mapToDouble(ServiceInstance::getThreshold).sum();
-            grayThreshold = Math.min(grayThreshold, maxGrayThreshold);
+            if(grayFilterConfig == null){
+                grayFilterConfig = new RouteDefinition.GrayFilterConfig();
+            }
+            double grayThreshold = Math.min(grayFilterConfig.getGrayThreshold(), grayFilterConfig.getMaxGrayThreshold());
             return Math.abs(Math.random() - 1) <= grayThreshold;
         }
         return true;

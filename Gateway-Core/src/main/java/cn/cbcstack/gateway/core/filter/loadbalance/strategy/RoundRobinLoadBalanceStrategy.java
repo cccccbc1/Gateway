@@ -40,7 +40,7 @@ public class RoundRobinLoadBalanceStrategy implements LoadBalanceStrategy {
         // 严格轮询, 用 AtomicInteger
         if (isStrictRoundRobin) {
             AtomicInteger strictPosition = strictPositionMap.computeIfAbsent(serviceName, k -> new AtomicInteger(0));
-            int index = Math.abs(strictPosition.getAndIncrement());
+            int index = strictPosition.getAndIncrement();
             serviceInstance = instances.get(index % instances.size());
             if (index >= THRESHOLD) {
                 strictPosition.set((index + 1) % instances.size());

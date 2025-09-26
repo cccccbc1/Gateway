@@ -17,7 +17,7 @@ public class RouteUtil {
             Request request = context.getRequest().build();
             CompletableFuture<Response> future = HttpClient.getInstance().executeRequest(request);
             // 注册回调
-            future.whenComplete(((response, throwable) -> {
+            future.whenCompleteAsync(((response, throwable) -> {
                 if (throwable != null) {
                     context.setThrowable(throwable);
                     throw new RuntimeException(throwable);

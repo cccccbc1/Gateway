@@ -9,6 +9,7 @@ import java.util.List;
 
 import static cn.cbcstack.gateway.common.constant.FilterConstant.GRAY_FILTER_NAME;
 import static cn.cbcstack.gateway.common.constant.GrayConstant.CLIENT_IP_GRAY_STRATEGY;
+import static cn.cbcstack.gateway.common.constant.GrayConstant.MAX_GRAY_THRESHOLD;
 
 /**
  * 根据 IP 灰度
@@ -23,8 +24,10 @@ public class IpGrayStrategy implements GrayStrategy {
                     context.getRoute().getFilterConfigs(),
                     GRAY_FILTER_NAME,
                     RouteDefinition.GrayFilterConfig.class);
-            double grayThreshold = instances.stream().mapToDouble(ServiceInstance::getThreshold).sum();
-            grayThreshold = Math.min(grayThreshold, grayFilterConfig.getMaxGrayThreshold());
+            if(grayFilterConfig == null){
+                grayFilterConfig = new RouteDefinition.GrayFilterConfig();
+            }
+            double grayThreshold = Math.min(grayFilterConfig.getGrayThreshold(), grayFilterConfig.getMaxGrayThreshold());
             return Math.abs(context.getRequest().getHost().hashCode()) % 100 <= grayThreshold * 100;
         }
         return true;
